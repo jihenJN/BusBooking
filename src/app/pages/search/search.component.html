@@ -11,7 +11,7 @@
                 <div class="col-md-3 d-flex align-items-center">
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-bus-front"></i></span>
-                     <select class="form-select" name="fromLocation" >
+                     <select class="form-select" name="fromLocation" [(ngModel)]="searchParams.fromLocation">
                         <option value="" selected> From Location</option>
                       @for (item of locations|async; track $index) {
                         <option [value]="item.LocationId">{{item.LocationName}} </option>
@@ -26,7 +26,7 @@
                 <div class="col-md-3 d-flex align-items-center">
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-bus-front"></i></span>
-                    <select class="form-select" name="toLocation" >
+                    <select class="form-select" name="toLocation"  [(ngModel)]="searchParams.toLocation" >
                         <option value="" selected>  To Location</option>
                         @for (item of locations|async; track $index) {
                           <option [value]="item.LocationId">{{item.LocationName}} </option>
@@ -38,11 +38,11 @@
                 <div class="col-md-3 d-flex align-items-center">
                   <div class="input-group">
                     <span class="input-group-text"><i class="bi bi-calendar"></i></span>
-                    <input type="date" class="form-control"  name="travelDate"  placeholder="Date"  >
+                    <input type="date" class="form-control"  name="travelDate"  placeholder="Date" [(ngModel)]="searchParams.travelDate" >
                   </div>
                 </div>
                 <div class="col-md-2 text-center">
-                  <button type="button" class="btn btn-light text-danger w-100">SEARCH BUSES</button>
+                  <button type="button" (click)="onSearch()"  class="btn btn-light text-danger w-100">SEARCH BUSES</button>
                 </div>
               </div>
             </form>
@@ -60,18 +60,32 @@
             </div>
           </div>
 
-            <div class="row">
+
+
+
+
+
+
+
+
+
+
+
+
+
+            @for (item of busesList; track $index) {
+             <div class="row">
                 <div class="col-12">
                     <div class="card mb-3">
                         <div class="row g-0">
                           <div class="col-md-3 d-flex flex-column justify-content-center align-items-center">
-                            <h5 class="card-title">busName</h5>
-                            <p class="card-text">vendorName</p>
+                            <h5 class="card-title">{{item.busName}}</h5>
+                            <p class="card-text">{{item.vendorName}}</p>
                           </div>
                           <div class="col-md-9">
                             <div class="card-body row">
                               <div class="col-md-2">
-                                <p class="card-text"><strong>date</strong></p>
+                                <p class="card-text"><strong>{{item.departureTime | date:"hh:mm:ss"}}</strong></p>
                                 <p class="card-text">Departure</p>
                               </div>
                               <div class="col-md-2">
@@ -79,17 +93,17 @@
                                 <p class="card-text">Duration</p>
                               </div>
                               <div class="col-md-2">
-                                <p class="card-text"><strong>arrivalTime</strong></p>
+                                <p class="card-text"><strong>{{item.arrivalTime | date:"hh:mm:ss"}}</strong></p>
                                 <p class="card-text">Arrival</p>
-                                <p class="text-danger">arrival time</p>
+                                <p class="text-danger">{{item.arrivalTime | date:'dd-MM-yyyy'}}</p>
                               </div>
                               <div class="col-md-2">
                                 <p class="card-text"><strong>4.5</strong> ⭐</p>
                                 <p class="card-text">567 Ratings</p>
                               </div>
                               <div class="col-md-2">
-                                <p class="card-text"><strong>price</strong></p>
-                                <p class="card-text">Seats available Out Of </p>
+                                <p class="card-text"><strong>{{item.price}}</strong></p>
+                                <p class="card-text"> 8 Seats available Out Of 12</p>
                               </div>
                               <div class="col-md-2 text-end">
                                 <button class="btn btn-danger"  >Book Seat</button>
@@ -100,6 +114,8 @@
                     </div>
                 </div>
             </div>
+
+            }
 
 
 
