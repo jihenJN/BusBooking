@@ -3,11 +3,12 @@ import { MasterService } from '../../services/master.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [AsyncPipe,FormsModule,DatePipe],
+  imports: [AsyncPipe,FormsModule,DatePipe,RouterLink],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })

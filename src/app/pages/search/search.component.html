@@ -102,11 +102,11 @@
                                 <p class="card-text">567 Ratings</p>
                               </div>
                               <div class="col-md-2">
-                                <p class="card-text"><strong>{{item.price}}</strong></p>
-                                <p class="card-text"> 8 Seats available Out Of 12</p>
+                                <p class="card-text"><strong>TND {{item.price}}</strong></p>
+                                <p class="card-text">  {{item.availableSeats}} Seats available Out Of {{item.totalSeats}}</p>
                               </div>
                               <div class="col-md-2 text-end">
-                                <button class="btn btn-danger"  >Book Seat</button>
+                                <button class="btn btn-danger" [routerLink]="['/booking/',item.scheduledId]" routerLinkActive="router-link-active"  >Book Seat</button>
                               </div>
                             </div>
                           </div>
