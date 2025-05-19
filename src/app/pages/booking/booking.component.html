@@ -1,1 +1,60 @@
-<p>booking works!</p>
+<section id="booking-form" class="my-4"  >
+  <div class="container mt-5">
+      <div class="row">
+          <div class="col-4">
+              <div class="row">
+                  <div class="col-12 text-center">
+                     <h5> Bus Seats</h5>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-4 text-center">
+                      <div class="seat reserved p-3 w-100">
+
+                      </div>
+                      Booked
+                  </div>
+                  <div class="col-4 text-center">
+                      <div class="seat available p-3 w-100">
+
+                      </div>
+                      Available
+                  </div>
+                  <div class="col-4 text-center">
+                      <div class="seat selected p-3 w-100">
+
+                      </div>
+                      Selection
+                  </div>
+              </div>
+              <hr>
+              <div class="row">
+                  @for (seatNum of seatsArray; track $index) {
+
+                    @if (checkIfSeatBooked(seatNum)!=-1) {
+
+                      <div class="col-3">
+                        <div class="seat available"> {{seatNum}}</div>
+                      </div>
+
+              }@else{
+                      <div class="col-3">
+                        <div class="seat reserved"> {{seatNum}}</div>
+                      </div>
+                    }
+
+              }
+
+
+
+              </div>
+
+          </div>
+          <div class="col-8">
+
+          </div>
+
+      </div>
+
+    </div>
+</section>
